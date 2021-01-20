@@ -15,8 +15,6 @@ body {
     padding-bottom: 30px;
 }
 
-/*********** Typography **********/
-
 h1, h2 {
 	margin-bottom: .6em;
 	font-weight: 300;
@@ -32,63 +30,66 @@ p {
   line-height: 1.4em;
 }
 
-#ex3 {
+
+/*********** animation **********/
+.container{
+    text-align: center;
     width: 100%;
-    height: 300px;
-    background-color: thistle;
-    border: 5px solid #666;
+    height: 200px;
+    background-color: black;
     box-sizing: border-box;
     display: grid;
     place-content: center;
     perspective: 1000px;
 }
 
-#ex3a {
-    width: 150px;
-    height: 150px;
-    background-color: red;
-    color: #fff;
-    font-size: 48px;
-    font-weight: bold;
-    display: grid;
-    place-content: center;
-    transition-timing-function: cubic-bezier(0.190, 1.000, 0.665, 0.140);
+.container span{
+    text-transform: uppercase;
+    display: block;
 }
 
-@keyframes animation3 {
+.text1{
+    color:white;
+    font-size: 45px;
+    font-weight: 300;
+    letter-spacing: 8px;
+    margin-bottom: 20px;
+    position: relative;
+    background: black;
+    animation: text 3s 1;
+}
+
+.text2{
+    font-size: 20px;
+    color:rgb(235, 189, 213);
+}
+
+@keyframes text {
     0% { 
-        transform: rotateY(0deg) translateX(0px);
-        animation-timing-function: ease-in;
+        color:black;
+        margin-bottom: -40px;
     }
     
-    50% {
-        transform: rotateY(180deg) translateX(0px) translateZ(300px);
-        animation-timing-function: linear;
-        background-color: skyblue;
+    30% {
+        letter-spacing: 25px;
+        margin-bottom: -40px;
     }
 
-    100% {
-        transform: rotateY(0deg) translateX(0px);
-        background-color: pink;
-        animation-timing-function: ease-out;
+    85% {
+        letter-spacing: 8px;
+        margin-bottom: -40px;
     }
 }
 
-#ex3:hover div {
-    animation: animation3 3s 2 alternate forwards;
-}
+
+
 /******* Section Styles *******/
 
 section{
-    padding:30px;
+    padding:50px;
     position: relative;
     padding-bottom: 15px;
-}
-
-#about{
-    background-color: #FFFFFF;
-    top: 50px;
-}
+} 
 
 h2 {
     margin: auto;
@@ -98,49 +99,12 @@ h2 {
     font-size: 20px;
 }
 
-#menu {
-	margin: 30px;
-}
-
-#menu article {
-	border-top: 3px solid #FFFFFF;
-	margin: 30px;
-    padding: 30px;
-    padding-bottom: 0;
-    text-align: center;
-}
-
-#menu h2 {
-	font-size: 20px;
-	text-transform: uppercase;
-}
-
-section div {
-	border-top: 3px solid #FFFFFF;
-	margin: 30px;
-    padding: 30px;
-    padding-bottom: 0;
-    text-align: center;
-}
-
-#one{
-	display: flex;
-    justify-content: center;
-    background-color: rgba(170, 205, 226, 0.7);
-}
-
-#two{
-	display: flex;
-    justify-content: center;
-    background-color: rgba(170, 143, 233, 0.4);
-}
 
 #three{
 	display: flex;
     justify-content: center;
-    background-color: gray;
+    background-color: rgba(170, 143, 233, 0.4);
 }
-
 
 /******** Header styles ******/
 
@@ -200,79 +164,6 @@ nav ul li a{
 
 /****************** Navigation **********************/
 
-#megamenu {
-	position:absolute;
-	left:-9999px;
-}
-
-
-#mainnav ul li:hover #megamenu {
-	left: auto;
-}
-
-
-#mainnav ul {
-	list-style-type: none;
-	margin: 0;
-    padding: 0;
-}
-
-#mainnav > ul > li{
-    display: flex;
-   
-}
-
-#mainnav > ul > li > ul{
-	flex: 1;
-}
-
-#mainnav > ul > li > a {
-	width:40px;
-    height:50px;
-    padding: 10px;
-	font-weight:bold;
-	color:#333;
-    font-size:85%;
-    text-transform: uppercase;
-}
-
-#megamenu {
-	width: 40px;
-	padding: 5px;
-	display: flex;
-}
-
-#megamenu .category {
-    flex: 1;
-    padding-top: 70px;
-}
-
-
-#megamenu .category h2 {
-    padding: 5px;
-	font-weight: 100;
-	font-size: 15px;
-}
-
-#megamenu .category ul li {
-    border-left: 3px solid #FFFFFF;
-    border-right: none;
-}
-
-#megamenu .category ul li a {
-	line-height: 2em;
-    padding: 4px;
-    font-size: 15px;
-}
-
-#megamenu .category ul li a:hover {
-	color:#7E0305;
-	border-left: 4px solid #7E0305;
-	padding-left: 4px;
-}
-
-/****************** Navigation **********************/
-
 #main ul li ul {
 	position: absolute;
 	left:-9999px;
@@ -297,29 +188,6 @@ nav ul li a{
 }
 
 
-#main ul li a {
-	display:block;
-	width:170.8px;
-	height:36px;
-	line-height:36px;
-	padding:0 10px;
-	text-align:center;
-	text-decoration:none;
-	text-transform:uppercase;
-	font-weight:bold;
-	color:#333;
-	font-size:85%;
-}
-
-#main ul li ul li a {
-	background: #eff4e1;
-}
-
-#main ul li ul li a:hover {
-	background: #e2df7c;
-}
-
-
 /*************** footer ****************/
 
 footer {
@@ -329,33 +197,8 @@ footer {
 }
 
 
-/* *** Media ****/
-@media only screen and (min-width: 600px) {
-
-    #container {
-        margin: auto;
-    }
-
-
-    /* body{
-        font-size: 10px;
-    }
-
-    nav{
-        flex: 1;
-    }
-
-    section {
-        padding:0;
-        text-align: center;
-    }
-} */
-
-@media only screen and (min-width: 1000px) {
-    
-    #container {
-        width:1040;
-    }
+@media (min-width: 800px){
+    main {display: flex;}
+    .half {flex: 1;}
+    .half {padding: 20px;}
 }
-
-/* end 1000px media */
