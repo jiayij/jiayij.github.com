@@ -42,8 +42,8 @@ p {
     display: grid;
     place-content: center;
     perspective: 1000px;
-    transition: width 1s;
     border-radius: 300px;
+    transition: width 2s;
 }
 
 .container:hover{
