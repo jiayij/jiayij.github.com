@@ -23,6 +23,12 @@ header {
     background: rgba(135, 44, 255, 0.301);
 }
 
+section {
+    width: 750px;
+    margin: auto;
+    padding: 20px;
+}
+
 footer {
     width: 120px;
     float: right;
