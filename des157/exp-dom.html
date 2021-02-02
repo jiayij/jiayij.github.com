@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions & DOM - Jiayi</title>
+</head>
+<body>
+ 
+    <script> 
+
+        var customerName = prompt("Please enter your name", "");
+        console.log(`Hello ${customerName}! How are you today?`);
+      
+        /* make myString with "" */
+        var myString = "";
+        /* loop for each line add more "#" */
+        for (var i = 0; i < 7; i++) {
+            myString = myString + "#";
+            console.log(myString);
+        } 
+
+        var userNum = prompt("Enter a whole number", "");
+
+        if(userNum < 7){
+            console.log("you entered a number smaller than 7");
+            for( var i=0; i<7; i++){
+                if(i == userNum){
+                    console.log(`Here is a ${i} <-- this is your number!`);
+                }
+                else {
+                    console.log(`Here is a ${i}`);
+                }
+            } 
+        }else if( userNum > 9){
+            console.log("you entered a big number");
+        } else {
+            console.log("ERROR: you didn't enter a number!");
+        }
+    </script>
+
+</body>
+</html>
