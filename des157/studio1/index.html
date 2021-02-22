@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party MadLibs</title>
+
+    <link href="styles.css" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <body>
+        <article id="container">
+    
+            <section class="heading">
+                <header>
+                    <h1>Party time</h1>
+                </header>
+            </section>
+            
+            <section class="forms">
+                <main>
+                    <form id="myForm" method="POST">
+    
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" required>
+                        <br>
+                        <br>
+            
+                        <label for="date">Date:</label>
+                        <input type="text" id="date" required>
+                        <br>
+                        <br>
+            
+                        <label for="people">People:</label>
+                        <input type="text" id="people" required>
+                        <br>
+                        <br>
+                        
+                        <label for="location">Location:</label>
+                        <select name="location" id="location" required>
+                            <option value="">Select a location</option>
+                            <option value="octave">Octave</option>
+                            <option value="tanglewood">Tanglewood</option>
+                            <option value="the eage">The eage</option>
+                        </select>
+                        <br>
+                        <br>
+            
+                        <label for="game">Game:</label>
+                        <select name="game" id="game" required>
+                            <option value="">Select a Game</option>
+                            <option value="harrypotter">Texas Hold'em poker</option>
+                            <option value="herminone">Rock Paper Scissors</option>
+                            <option value="ron">Dice</option>
+                        </select>
+                        <br>
+                        <br>
+
+                        <label for="drink">Drink:</label>
+                        <select name="drink" id="drink" required>
+                            <option value="">Select a Drink</option>
+                            <option value="harrypotter">Hennessy</option>
+                            <option value="herminone">Baileys</option>
+                            <option value="ron">White Walker</option>
+                        </select>
+                        <br>
+                        <br>
+    
+                        <label for="song">Song:</label>
+                        <select name="song" id="song" required>
+                            <option value="">Select a Song</option>
+                            <option value="portkey">Why You So Beautiful</option>
+                            <option value="broomstick">Him & I</option>
+                            <option value="train">get you the moon</option>
+                        </select>
+                        <br>
+                        <br>
+                        <br>
+
+                        <label for="something">Something You Want to Say:</label>
+                        <input type="text" id="something" required>
+                        <br>
+                        <br>
+    
+                        <input type="submit" value="Submit" class="open">
+    
+                    </form>
+                </main>
+            </section> 
+    
+            <section id="overlay" class="hidden">
+                <article>
+    
+                    <h1>Welcome to the Relx Party</h1>
+
+                    <p>The streamers are hung,</p>
+                    <p>the lights are all low,</p>
+                    <p>the guests are all hidden,</p>
+                    <p>so let the cloud flow!</p>
+                    
+        
+                    <p>Dear <span id="name">${name}</span>,</p>
+                    <p>This is an invited card to the party at  As one of the many chosen ones, you will experience a new life 
+                        of many magical adventures. Please be ready to meet, <span class="char1">${character1}</span>, who will be your mentor through out your 
+                        experience as a wizard in training. Your <span class="ani">${animal}</span> will be your companion to the academy. <span class="frie1">${friend1}</span>
+                        and <span class="frie2">${friend2}</span> have receive this invitation as well and will be in the same dorming group as you. I hope you will 
+                        be excited to meet your house family, <span class="hous">${house}</span>, who will be waiting for you when you arrive. You will learn spells 
+                        and train to defeat your greatest threat, <span class="char2">${character2}</span>. A <span class="trans">${transportation}</span>, 
+                        is ready to pick you up tommorrow morning. We look forward to meeting you, <span class="nameOfUser">${userName}</span>.
+
+
+                        Please join us for a
+Surprise 40th Birthday Bash
+in honor of
+Steven Drems
+Saturday, March 21, 2018
+at 7 o'clock in the evening
+Pete and Stephanie's House
+1210 Main Street, Edwardstown
+                    </p>
+                    <p id="end">Sincerely, <span class="char3">${character3}</span></p>
+                    <button class="replay close">Play again!</button>
+                    <button class="corner close">&otimes;</button>
+    
+                </article>
+            </section>      
+    
+        </article>
+    
+        <footer id="contact">
+			<p><a href="mailto:&#098;&#106;&#121;&#106;&#105;&#097;&#110;&#103;&#064;&#117;&#099;&#100;&#097;&#118;&#105;&#115;&#046;&#101;&#100;&#117;">Email me</a></p>
+			<p><a href="http://validator.w3.org/check?uri=referer">Valid HTML</a></p>
+			<P><a href="https://jigsaw.w3.org/css-validator/check/referer">Valid CSS</a></P>		
+		</footer>
+        
+    </body>
+    </html>
+
+</body>
+
+</html>
