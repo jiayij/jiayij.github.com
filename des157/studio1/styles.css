@@ -4,54 +4,111 @@ html{
 
 body {
     font-family: monospace;
-    font-size: 19px;
-    background-image:url('back.jpg');
+    font-size: 16px;
+    background-image:url('images/back.jpg');
     background-size: 100%;
-    background-repeat: no-repeat;
-    padding-top: 20px;
-    line-height: 1.4em;
+    padding-top: 30px;
+    padding-right: 500px;
+    line-height: 1.5em;
 }
 
-main {
+#firstview{
     max-width: 600px;
-    padding: 20px;
     margin: auto;
-    background-color: aliceblue;
+    margin-top: 50px;
+    width: 500px;
+    padding: 3%;
+    background : rgb(219, 210, 211);
+    opacity : 0.70;
+    box-shadow: 4px 4px 4px  #9b7386;
 }
 
-.hidden {
-    display: none;
+h1{
+    font-size: 40px;
+    text-align: center;     
 }
 
-.showing {
-    display: block;
+p{
+    padding: 0;
+    margin: 0;
 }
 
-#overlay {
-    position: absolute;
-    background-color: rgba(0,0,0,0.5);
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+label {
+    background : rgb(100, 76, 92);
+    opacity : 0.8;
+    border-radius : 15px;
+    text-decoration: none;
+    padding: 10px;
+    color: white;
 }
 
-#overlay article {
-    box-sizing: border-box;
-    background-color:#fff;
-    padding: 20px;
-    width: 50vw;
-    height: 80vh;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    overflow-y: scroll;
-}
-
-
-footer {
+button {
+    background-color: #54018b;
+    border: none;
+    color: white;
+    padding: 10px 20px;
     text-align: center;
-    padding: 20px;
-    background: rgb(23,96,179,0.1);
+    font-size: 14px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius : 15px;
+}
+  
+button:hover {opacity: 1}
+
+#end{
+    text-align: center
+}
+  
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;  
+    text-align: center;
+    background-color: rgba(121, 121, 121, 0.5);
+}
+
+footer a {
+    color: black;
+}
+
+.shade{
+    position: fixed;
+    top: 0;
+    margin: auto;
+    margin-top: 85px;
+    margin-left: 130px;
+    width: 500px;
+    padding: 5%;
+    background : rgb(219, 210, 211);
+    box-shadow: 4px 4px 4px  #9b7386;
+    visibility: hidden;
+    transform: translateX(-100%);
+    line-height: 2;
+    font-size: 18px;
+}
+
+.shade span{
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.active{
+    animation:  anima .5s cubic-bezier(.67,.11,0,1.75) forwards;
+}
+
+@keyframes anima{
+    0%{
+
+        transform:translateX(-100%) scale(0);
+    }
+    100%{
+        visibility: visible;
+        transform:translateX(0) scale(1);
+    }
 }

@@ -1,84 +1,32 @@
-( function(){
+(function () {
     'use strict';
-    console.log("reading js");
 
-    var myForm = document.querySelector('#myForm');
-    var overlay = document.querySelector('#overlay');
-    
-    myForm.addEventListener('submit', function(event) { //when the user clicks on the submit button
+    let name = document.getElementById('name')
+    let friend1 = document.getElementById('friend1')
+    let friend2 = document.getElementById('friend2')
+    let relx = document.getElementById('relx')
+    let drink = document.getElementById('drink')
+    let game = document.getElementById('game')
+    let song = document.getElementById('song')
+    let submit = document.getElementById('submit')
+    let shade = document.getElementsByClassName('shade')[0]
+    let close = document.getElementsByClassName('close')[0]
+    let para1 = document.getElementsByClassName('para1')[0]
+    let para2 = document.getElementsByClassName('para2')[0]
+    let para3 = document.getElementsByClassName('para3')[0]
 
-        event.preventDefault();
-
-        document.getElementById('overlay').className = 'showing'; //the overlay content appears
-
-        var userName = document.querySelector('#userName').value;
-        var transportation = document.querySelector('#transportation').value;
-        var animal = document.querySelector('#animal').value;
-        var friend1 = document.querySelector('#friend1').value;
-        var friend2 = document.querySelector('#friend2').value;
-        var character1 = document.querySelector('#character1').value;
-        var character2 = document.querySelector('#character2').value;
-        var character3 = document.querySelector('#character3').value;
-        var house = document.querySelector('#house').value;
-
-         //making sure users give inputs 
-        if (userName && transportation && animal && friend1 && friend2 && character1 && character2 && character3 && house) { //the && makes so that if any of these field are empty, which also takes into account of '' empty strings, it returns false then an error message will appear            
-
-            var myBeg = `Dear ${userName},`;
-
-            var myMid = 
-            `You have been invited to attend the Wizarding School of Hogwarts. As one of the many chosen ones, you will experience a new life 
-            of many magical adventures. Please be ready to meet, ${character1}, who will be your mentor through out your experience as 
-            a wizard in training. Your ${animal} will be your companion to the academy. ${friend1} and ${friend2} have receive this 
-            invitation as well and will be in the same dorming group as you. I hope you will be excited to meet your house family, ${house}, 
-            who will be waiting for you when you arrive. You will learn spells and train to defeat your greatest threat, ${character2}. A 
-            ${transportation}, is ready to pick you up tommorrow morning. We look forward to meeting you, ${userName}.`;
-            
-            var myEnd = `Sincerely, ${character3}`;
-
-            for (var i=0; i<myBeg.length; i++) {
-                myBeg[1].style.color = "red";
-            };
-        } 
-        else { 
-            const myText = "Do you not wish to attend Hogwart?";
+    submit.onclick = function (card) {
+        if (name.value !== '' && location.value !== '' && friend1.value !== '' && friend2.value !== '' && relx.value !== '' && drink.value !== '' && game.value !== '' && song.value !== '') {
+            card.preventDefault();
+            shade.classList.add('active')
+            para1.innerHTML = "Welcome to the Relx Party! The streamers are hung, the lights are all low, the guests are all hidden, so let the cloud flow!" 
+            para2.innerHTML = "Dear " + name.value + "."
+            para3.innerHTML = "This is an invited card to the party. Please join us for a wonderful Relx Party! June 25th,2021 at 8 o'clock in the evening. 1419 Westwood Blvd, Los Angeles, CA. You can bring " + friend1.value + " and " + friend2.value + " with you. Enjoy your free " + relx.value + " Relx, drink some " + drink.value + ", and play " + game.value + " together! Also, '" + song.value + "'is ready for you."
         }
+    }
+    close.onclick = function () {
+        shade.classList.remove('active')
+    }
 
-        //updating the inputs into the article tag
-        beg.innerHTML = myBeg; 
-        mid.innerHTML = myMid;
-        end.innerHTML = myEnd;
-    });
+})()
 
-    //when user clicks the X button, the overlay content is hidden, input does not reset so that users can go back to change their input
-    document.querySelector('.corner').addEventListener('click', function (event) { 
-        event.preventDefault();
-        document.getElementById('overlay').className = 'hidden';
-
-    });
-
-    //when user clicks the submit button, overlay is hidden, input resets
-    document.querySelector('.replay').addEventListener('click', function (event) { 
-        event.preventDefault();
-        document.querySelector('#userName').value = '';
-        document.querySelector('#transportation').value = '';
-        document.querySelector('#animal').value = '';
-        document.querySelector('#friend1').value = '';
-        document.querySelector('#friend2').value = '';
-        document.querySelector('#character1').value = '';
-        document.querySelector('#character2').value = '';
-        document.querySelector('#character3').value = '';
-        document.querySelector('#house').value = '';
-
-        document.getElementById('overlay').className = 'hidden';
-
-    });
-
-    //when user press the escape key, the overlays content is hidden again
-    document.addEventListener('keydown', function (event) {
-        if (event.key === 'Escape') {
-            document.querySelector('.showing').className = 'overlay hidden';
-        }
-    });
-    
-}());
