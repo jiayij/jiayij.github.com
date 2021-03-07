@@ -1,42 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Studio2</title>
-
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game of PIG</title>
 	<link href="https://fonts.googleapis.com/css2?family=Exo:wght@200&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;1,100;1,200;1,300;1,400&display=swap" rel="stylesheet">             
-	<link href="styles.css" rel="stylesheet">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
     <script src="script.js" defer></script>
 </head>
 
 <body>
     <header>
-        <h1>My 2019</h1>
-        <h2>Click to see more detail!</h2>
+        <h1>Game of PIG</h1>
+        <p>There are two players. The player whose turn it is rolls the dice. The total of the roll is added to the current player's score, unless either die comes up as a "one". If this happens, this player's turn is over, and it is the other player’s turn. After each roll, the current player can either roll again, (assuming a "one" was not rolled) or if the current player feels that luck is running thin, they can pass to the other player. The first player to get 30 points or higher wins.</p> 
+        <p>Oh, and if you roll two "ones" (snake eyes), your current score gets zeroed out. So don’t do that.</p>
+        <p>Randomly Pick the First Player, and Start the Game</p>
+        <div id="gamecontrol">
+            <button id="startgame">Let's Play</button>
+        </div>
     </header>
 
     <div id="main">
-        <div id="bigpic">
-            <div id="close"></div>
-            <span id="left"></span>
-            <img id="view-photo" src="" alt=""/>
-            <span id="right"></span>
-        </div>
-
-        <div id="thumb">
-            <img src="images/image1.jpg" alt="" class="photo" id="pic1"/>
-            <img src="images/image2.jpg" alt="" class="photo" id="pic2"/>
-            <img src="images/image3.jpg" alt="" class="photo" id="pic3"/>
-            <img src="images/image4.jpg" alt="" class="photo" id="pic4"/>
-            <img src="images/image5.jpg" alt="" class="photo" id="pic5"/>
-            <img src="images/image6.jpg" alt="" class="photo" id="pic6"/>
-            <img src="images/image7.jpg" alt="" class="photo" id="pic7"/>
-            <img src="images/image8.jpg" alt="" class="photo" id="pic8"/>
-            <img src="images/image9.jpg" alt="" class="photo" id="pic9"/>
-        </div>
+        <div id="game"></div>
+        <div id="actions"></div>
+        <div id="score"></div>
     </div>
 
     <footer>
@@ -46,6 +34,5 @@
             <a href="https://jigsaw.w3.org/css-validator/check/referer">Valid CSS</a>	
         </p>
     </footer>
-
 </body>
 </html>

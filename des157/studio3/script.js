@@ -1,65 +1,112 @@
-(function () {
+(function (){
     'use strict';
     console.log("reading js");
 
-    var srcs = [];
-    function addLoadEvent(func){
-        var old = window.onload;
-        if(typeof old !== 'function'){
-            window.onload = func;
+    const startGame = document.getElementById('startgame');
+    const gameControl = document.getElementById('gamecontrol');
+    const game = document.getElementById('game');
+    const score = document.getElementById('score');
+    const actionArea = document.getElementById('actions');
+
+    //audio
+    const diceSound = new Audio('media/dice.m4a');
+    const winSound= new Audio('media/win.m4a');
+
+    const gameData = {
+        dice: ['images/1die.jpg', 'images/2die.jpg', 'images/3die.jpg', 
+            'images/4die.jpg', 'images/5die.jpg', 'images/6die.jpg'],
+        players: ['player 1', 'player 2'],
+        score: [0, 0],
+        roll1: 0,
+        roll2: 0,
+        rollSum: 0,
+        index: 0,
+        gameEnd: 29
+    };
+
+    startGame.addEventListener('click', function(){
+        gameData.index = Math.round(Math.random());
+        // gameControl.innerHTML = '<h2>The Game Has Started</h2>';
+        gameControl.innerHTML += '<button id="quit">Wanna Quit?</button>';
+        document.getElementById('quit').addEventListener('click', function(){
+            location.reload();
+        });
+        console.log(gameData.index);
+        setUpTurn();
+    });
+
+
+    function setUpTurn(){
+        game.innerHTML = `<p>Roll the dice for ${gameData.players[gameData.index]}</p>`;
+        showCurrentScore();
+        actionArea.innerHTML = '<button id="roll">Roll the Dice</button>';
+        document.getElementById('roll').addEventListener('click',function(){
+            throwDice();
+            diceSound.play();
+        });
+    }
+
+    function throwDice(){
+        actionArea.innerHTML = '';
+        gameData.roll1 = Math.floor(Math.random()*6)+1; //using ceil would result in a zero, random() is inclusive of 0 but not 1.
+        gameData.roll2 = Math.floor(Math.random()*6)+1;
+        game.innerHTML = `<p>Roll the dice for ${gameData.players[gameData.index]}</p>`;
+        game.innerHTML += `<img src="${gameData.dice[gameData.roll1 - 1]}" width="250" height="250">
+                            <img src="${gameData.dice[gameData.roll2 - 1]}" width="250" height="250">`;
+        gameData.rollSum = gameData.roll1 + gameData.roll2;
+        console.log(gameData);
+        diceSound.play();
+        
+        if(gameData.rollSum === 2){
+            game.innerHTML += '<p>Oh snap! Snake eyes!</p>';
+            gameData.score[gameData.index] = 0;
+            gameData.index ? (gameData.index = 0) : (gameData.index = 1);
+            showCurrentScore();
+            setTimeout(setUpTurn, 2000);
+            diceSound.play();
+        }
+
+        else if(gameData.roll1 === 1 || gameData.roll2 === 1){
+            gameData.index ? (gameData.index = 0) : (gameData.index = 1);
+            game.innerHTML += `<p>Sorry, one of your rolls was a one, switching to ${gameData.players[gameData.index]}</p>`;
+            setTimeout(setUpTurn, 2000);
+            diceSound.play();
         }
         else{
-            window.onload = function () {
-                old();
-                func();
-            }
-        }
-    }
-    function view(src){
-        var bigpic = document.getElementById("bigpic");
-        var viewPhoto = document.getElementById("view-photo");
-        if(src){
-            bigpic.style.display = "block";
-            viewPhoto.setAttribute("src",src);
-        }
-    }
-    function start(){
-        var thumb = document.getElementById("thumb");
-        var imgs = thumb.getElementsByTagName("img");
-        for(var i = 0;i < imgs.length; ++i){
-            srcs.push(imgs[i].getAttribute("src"));
-            console.log(i + imgs[i].getAttribute("src"));
-            (function (i) {
-                imgs[i].addEventListener("click", function () {
-                    view(imgs[i].getAttribute("src"))
+            gameData.score[gameData.index] = gameData.score[gameData.index] + gameData.rollSum;
+            actionArea.innerHTML = '<button id="rollagain">Roll Again</button><button id="pass">Pass</button>';
+
+            document.getElementById('rollagain').addEventListener('click', function(){
+                    setUpTurn();
                 });
-            })(i);
 
+            document.getElementById('pass').addEventListener('click', function(){
+                    gameData.index ? (gameData.index = 0) : (gameData.index = 1);
+                    setUpTurn();
+                });
+
+                checkWinningCondition();
         }
-        var left = document.getElementById("left");
-        var right = document.getElementById("right");
-        left.addEventListener("click", function () {
-        change("left");
-        });
-        right.addEventListener("click", function () {
-            change("right");
-        });
     }
-    function close(){
-        var bigpic = document.getElementById("bigpic");
-        var close = document.getElementById("close");
-        close.addEventListener("click", function () {
-            bigpic.style.display = "none";
-        });
-    }
-    function change(type){
-        var photo = document.getElementById("view-photo");
-        var src = photo.getAttribute("src");
-        var index = srcs.indexOf(src);
-        var nextarc = (type ==="left" ? (index - 1 + srcs.length)%srcs.length:(index + 1)%srcs.length);
-        photo.setAttribute('src',srcs[nextarc]);
-    }
-    addLoadEvent(start);
-    addLoadEvent(close);
 
-})()
+
+    function checkWinningCondition(){
+        if (gameData.score[gameData.index] > gameData.gameEnd){
+            winSound.play();
+            score.innerHTML = `<h2>${gameData.players[gameData.index]}
+            wins with ${gameData.score[gameData.index]} points!</h2>`;
+
+            actionArea.innerHTML = "";
+            document.getElementById('quit').innerHTML = "New Game?";
+        }
+        else{
+            showCurrentScore();
+        }
+    }
+
+    function showCurrentScore() {
+        score.innerHTML = `<p>  <strong> ${gameData.players[0]}:
+          ${gameData.score[0]}</strong> <strong>${gameData.players[1]}: 
+        ${gameData.score[1]}</strong></p>`;
+    } 
+})();
