@@ -1,5 +1,6 @@
 (function () {
     'use strict';
+    console.log("reading js");
 
     let name = document.getElementById('name')
     let friend1 = document.getElementById('friend1')
